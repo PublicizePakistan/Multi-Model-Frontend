@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Color: prepaid-credit inspired palette ──────────────── */
+  --color-ink:        #0B0F19;   /* base background */
+  --color-ink-raised: #11172A;   /* cards, raised surfaces */
+  --color-ink-line:   #1F2740;   /* hairline borders */
+
+  --color-gold:       #F0B429;   /* points / balance / energy */
+  --color-gold-dim:   #7A5C1A;   /* gold at low emphasis */
+
+  --color-signal:     #5B8DEF;   /* AI / intelligence accent */
+  --color-signal-dim: #2A3F73;
+
+  --color-paper:       #EDEDED; /* primary text on dark */
+  --color-paper-muted: #8B93A7; /* secondary text */
+  --color-paper-faint: #4B5468; /* tertiary / placeholder */
+
+  --color-danger: #EF5350;
+  --color-success: #3FBF7F;
+
+  /* ── Type ─────────────────────────────────────────────────── */
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--color-ink);
+  font-family: var(--font-body);
+  color: var(--color-paper);
+}
+
+/* Signature element: the prepaid-style balance arc, reused across pages */
+.balance-arc {
+  background: conic-gradient(
+    from -90deg,
+    var(--color-gold) 0deg,
+    var(--color-gold) calc(var(--arc-pct, 60) * 3.6deg),
+    var(--color-ink-line) calc(var(--arc-pct, 60) * 3.6deg),
+    var(--color-ink-line) 360deg
+  );
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-fade-up {
+    animation: fadeUp 0.5s ease-out both;
+  }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   ADD THIS TO THE BOTTOM OF:
+   D:\MultiModel\frontend\src\index.css
+   (Do not replace the whole file — just paste at the very end)
+   ───────────────────────────────────────────────────────────── */
+
+[data-theme="light"] {
+  --color-ink:         #F5F5F7;
+  --color-ink-raised:  #FFFFFF;
+  --color-ink-line:    #E2E2E7;
+  --color-paper:       #1A1A2E;
+  --color-paper-muted: #4A4A6A;
+  --color-paper-faint: #8A8AA8;
+  --color-gold:        #D97706;
+  --color-signal:      #3B7DE8;
+  --color-danger:      #DC2626;
+  --color-success:     #16A34A;
+}
+
+[data-theme="light"] .balance-arc {
+  background: conic-gradient(
+    var(--color-gold) 0deg calc(var(--arc-pct, 50) * 3.6deg),
+    #D1D5DB calc(var(--arc-pct, 50) * 3.6deg) 360deg
+  );
+}
+
+[data-theme="light"] .shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}

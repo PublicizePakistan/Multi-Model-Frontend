@@ -1,0 +1,23 @@
+ADD THESE LINES TO:
+D:\MultiModel\Platform\app\config.py
+Inside the Settings class (alongside existing fields like OPENROUTER_API_KEY):
+
+    # DialogPay
+    DIALOGPAY_MERCHANT_ID: str = ""
+    DIALOGPAY_DATABASE_NAME: str = ""
+    DIALOGPAY_USERNAME: str = ""
+    DIALOGPAY_PASSWORD: str = ""
+    DIALOGPAY_PRIVATE_KEY: str = ""
+    DIALOGPAY_BASE_URL: str = "https://checkout.dialogpay.net"
+    FRONTEND_URL: str = "http://localhost:5173"
+
+AND ADD THESE LINES TO YOUR .env FILE:
+D:\MultiModel\Platform\.env
+
+DIALOGPAY_MERCHANT_ID=your_merchant_id
+DIALOGPAY_DATABASE_NAME=your_database_name
+DIALOGPAY_USERNAME=your_username
+DIALOGPAY_PASSWORD=your_password
+DIALOGPAY_PRIVATE_KEY=your_private_key
+DIALOGPAY_BASE_URL=https://checkout.dialogpay.net
+FRONTEND_URL=http://localhost:5173
